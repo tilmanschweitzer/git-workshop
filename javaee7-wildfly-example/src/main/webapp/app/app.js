@@ -2,10 +2,6 @@ angular.module("javaeeExample", []);
 angular.module("javaeeExample").controller('mainController', function ($http, $scope) {
     $scope.workshopParticipants = [];
 
-    $http.get('ws/example').success(function (workshopParticipants) {
-        $scope.workshopParticipants = $scope.workshopParticipants.concat(workshopParticipants);
-    });
-
     function loadStatic(n) {
         $http.get('workshopParticipants/participant-' + n + '.json').success(function (participant) {
             $scope.workshopParticipants.push(participant);
@@ -13,5 +9,8 @@ angular.module("javaeeExample").controller('mainController', function ($http, $s
         });
     }
 
-    loadStatic(0);
+    $http.get('ws/example').success(function (workshopParticipants) {
+        $scope.workshopParticipants = $scope.workshopParticipants.concat(workshopParticipants);
+        loadStatic(0);
+    });
 });
