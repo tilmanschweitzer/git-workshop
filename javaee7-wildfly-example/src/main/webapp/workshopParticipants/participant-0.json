@@ -1,0 +1,10 @@
+{
+  "name": "<Name>",
+  "role": "<Rolle>",
+  "questions": [
+    {
+      "question": "Was zur Hölle ist git?",
+      "answered": false
+    }
+  ]
+}

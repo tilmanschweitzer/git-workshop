@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="javaeeExample">
+<head>
+    <title>Start Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="vendor/angular.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <link rel="stylesheet" href="vendor/bootstrap.css"/>
+    <link rel="stylesheet" href="vendor/bootstrap-theme.css"/>
+    <style>
+        .answered {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" ng-controller="mainController">
+    <h1>JavaEE7 Wildfly Example</h1>
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rolle</th>
+                    <th>Fragen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="workshopParticipant in workshopParticipants">
+                    <td>{{ workshopParticipant.name }}</td>
+                    <td>{{ workshopParticipant.role }}</td>
+                    <td>
+                        <ul>
+                            <li ng-repeat="question in workshopParticipant.questions"
+                                ng-class="{ answered: question.answered }">
+                                {{ question.question }}
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
