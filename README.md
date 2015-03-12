@@ -2,6 +2,34 @@
 
 Live-Notizen und Kommunikation: [https://etherpad.mozilla.org/9xavy5HzeD](https://etherpad.mozilla.org/9xavy5HzeD)
 
+## Agenda
+
+* Einführung
+    * Kurze Vorstellung der Teilnehmer
+    * Kurze Vorstellung der Agenda mit Abklärung der Erwartungen und Wünsche
+    * Installation und grundlegende Konfiguration
+    * Überblick über die Konzepte
+* Grundlagen I - Lokales Arbeiten 
+    * Basis-Befehle
+    * Konzeptioneller Vergleich mit SVN
+    * Arbeiten mit der Staging Area
+    * Zurücksetzen von Änderungen
+* Grundlagen II - Verteiltes Arbeiten
+    * Stash als zentrales Repository
+    * Befehle zum verteilten Arbeiten
+    * Einführung in die Oberfläche von Stash
+* Grundlagen III - Branching/Merging
+    * Befehle und Konzepte
+    * Workflows und Unterstützung in Stash 
+* Fallstricke und Best-Practices
+* Grafische git-Tools und IDE-Plugins
+* Weitere Funktionen (nach Bedarf und Interesse)
+    * Tagging
+    * History Rewriting
+    * Zurückverfolgen von Änderungen
+    * Cherry-Picking
+* Ausblick
+
 ## Installation und grundlegende Konfiguration
 
 * git Projektseite: [git-scm.com](http://git-scm.com/)
@@ -95,7 +123,7 @@ Live-Notizen und Kommunikation: [https://etherpad.mozilla.org/9xavy5HzeD](https:
 
 ### Befehle zum verteilten Arbeiten
 
-`git clone|fetch|pull|push`
+`git clone|pull|push|(fetch)`
 
 
     git clone <repository-url>
@@ -123,6 +151,8 @@ Live-Notizen und Kommunikation: [https://etherpad.mozilla.org/9xavy5HzeD](https:
    * Inhalte ändern
 
 #### Repositorys für Stash anpassen
+
+`git remote add|rm`
 
 Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 
@@ -164,8 +194,21 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     git push -u origin experimental/xy
     
     ## achtung - NICHT in anderen remote branches pushen!!!
+    
+    # zurück mergen
+    git checkout master
+    
 
 #### Branching und Merging mit Stash
+
+##### Branch erstellen
+
+![Branch Erstellen](create-branch.png)
+
+##### Branch Übersicht
+
+![](branch-overview.png)
+
 
 #### Pull Requests
 
@@ -173,10 +216,12 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 
 * Fallstricke
     * Vergessen von `git push` 
-    * Public History-Rewriting - YOU SHALL NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
-    * `git push --force` (In Stash verbieten!!!)
     * Naives Merging -- Server Änderungen einfach überschreiben.
     * Merging ohne Konflikte kann auch Fehler produzieren
+    * Zu kleine oder zu große Repositories
+* Bad Practice
+    * Public History-Rewriting - YOU SHALL NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
+    * `git push --force` (In Stash verbieten!!!)
 * Good-Practices
     * Oft committen oder stagen
     * Feature-Branches in Sync mit `develop` halten
@@ -189,6 +234,8 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 ### Config
 
     cat .git/config
+    git config user.email "tpotthof@seibert-media.net"
+    git config user.name "Tilman Potthof"
 
 ### Advanced Log
 
