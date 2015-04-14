@@ -1,5 +1,6 @@
 package de.tilmanpotthof.workshop;
 
+
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import javax.ejb.Stateless;

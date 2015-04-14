@@ -1,7 +1,5 @@
 # git-workshop
 
-Live-Notizen und Kommunikation: [https://etherpad.mozilla.org/9xavy5HzeD](https://etherpad.mozilla.org/9xavy5HzeD)
-
 ## Agenda
 
 * Einführung
@@ -69,6 +67,9 @@ Live-Notizen und Kommunikation: [https://etherpad.mozilla.org/9xavy5HzeD](https:
     ## Author und Email
     git config --global user.email "myemail@example.com"
     git config --global user.name "My Username"
+    
+    # Commit mit neuem Namen ändern
+    git commit --amend --reset-author
     
     git commit -m "mein erster commit"
     git log
@@ -230,6 +231,8 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 ## Weitere Funktionen / Konzepte
 
 ### git flow
+
+* https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 
 ### Config
 
