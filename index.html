@@ -20,6 +20,12 @@
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <style>
+      .reveal section img {
+        background-color:rgba(255,255,255,0.3);
+      }
+    </style>
+
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
@@ -59,30 +65,10 @@
         </script></section>
       </section>
 
-        <section data-background="#295535">
-          <section>
-            <div data-markdown><script type="text/template">
-              ##
-              *
-            </script></div>
-          </section>
-        </section>
-
-
-      <section data-background="#2e6b46">
+      <section data-background="#295535">
         <section>
           <div data-markdown><script type="text/template">
-            ##
-            *
-          </script></div>
-        </section>
-      </section>
-
-      <section data-background="#2e6b46">
-        <section>
-          <div data-markdown><script type="text/template">
-            ##
-            *
+            # Einführung
           </script></div>
         </section>
       </section>
@@ -90,34 +76,302 @@
       <section data-background="#0c3b66">
         <section>
           <div data-markdown><script type="text/template">
-            ## ?
-            *
+            ## Grundlagen I - Lokales Arbeiten
           </script></div>
         </section>
       </section>
 
-      <section data-background="#542866">
+      <section data-background="#0c3b66">
         <section>
-          <div data-markdown><script type="text/template">
-            ## ?
-            *
-          </script></div>
+          <h2>Basis Befehle</h2>
+          <pre><code contenteditable>
+            git init|add|rm|commit|status|log|config
+          </code></pre>
+        </section>
+        <section>
+          <h2>Repository anlegen</h2>
+          <pre><code contenteditable>
+            mkdir git-hallo-welt
+            cd git-hallo-welt
+            git init
+            ls -la # Windows: dir
+            git status
+          </code></pre>
+        </section>
+        <section>
+          <h2>Datei anlegen, hinzufügen und committen</h2>
+          <pre><code contenteditable>
+            echo "hallo welt" >> hallowelt.txt # nur unix
+            git add hallowelt.txt
+            git status
+            git rm hallowelt.txt
+            git rm --cached hallowelt.txt
+            git add hallowelt.txt
+            git commit -m "mein erster commit"
+          </code></pre>
+        </section>
+        <section>
+          <h2> konfigurieren</h2>
+          <pre><code contenteditable>
+            git config --global user.email "myemail@example.com"
+            git config --global user.name "My Username"
+
+            # Commit mit neuem Namen ändern
+            git commit --amend --reset-author
+
+            # Konfiguration anzeigen
+            git config --local --list
+            git config --global --list
+          </code></pre>
+        </section>
+        <section>
+          <h2>Hilfe und Log</h2>
+          <pre><code contenteditable>
+            git help log
+
+            git log # Wo ist die Revisionsnummer? (Short Hash)
+
+            # Kurze Anzeige
+            git log --oneline
+
+            # Nach Autor filtern
+            git log --author="Tilman Potthof"
+
+            # Benutzerdefinierte Formattierung
+            git log --pretty=format:"%h %s"
+          </code></pre>
+        </section>
+        <section>
+          <h2>Hilfe</h2>
+          <pre><code contenteditable>
+            git help log
+          </code></pre>
         </section>
       </section>
+
+        <section data-background="#0c3b66">
+          <section>
+            <h2>Die Staging Area</h2>
+            <img src="img/staging-area.png">
+          </section>
+          <section>
+            <img src="img/staging-area-commands.png">
+          </section>
+          <section>
+            <h2>Befehle</h2>
+            <pre><code contenteditable>
+              git add|reset|checkout|diff
+            </code></pre>
+          </section>
+          <section>
+            <h2>Status und Veränderungen</h2>
+            <pre><code contenteditable>
+              git status
+
+              # Datei bearbeiten
+              git status
+              git diff
+
+              # Datei hinzufügen
+              git add &ltdateiname&gt
+              git status
+              git diff
+              git diff -r head
+              git diff -r &lthash&gt
+
+            </code></pre>
+          </section>
+          <section>
+            <h2>Zurücksetzen von Änderungen</h2>
+            <pre><code contenteditable>
+              git status
+
+              # Zurücksetzen
+              git reset &ltdateiname&gt
+              git status
+
+              # Dateiinhalt prüfen
+
+              # Varianten
+              git reset head -- &ltdateipfad&gt
+            </code></pre>
+          </section>
+          <section>
+            <h2>Zurückholen von Änderungen</h2>
+            <pre><code contenteditable>
+              git status
+
+              # Zurückholen
+              git checkout &ltdateiname&gt
+              git status
+
+              # Dateiinhalt prüfen
+
+              # Varianten
+              git checkout head &ltdateiname&gt
+              git checkout -r &lthash&gt .
+            </code></pre>
+          </section>
+          <section>
+            <h2>Weitere Befehle</h2>
+            <pre><code contenteditable>
+              # Alle überwachten Dateien committen
+              git commit -a -m "Wichtiger commit"
+
+              # Partielles/Interaktives Hinzufügen
+              git add -p
+            </code></pre>
+          </section>
+        </section>
+
+        <section data-background="#542866">
+          <section>
+            <div data-markdown><script type="text/template">
+              ## Grundlagen II - Verteiltes Arbeiten
+            </script></div>
+          </section>
+        </section>
+
+        <section data-background="#542866">
+          <section>
+            <h2>Befehle</h2>
+            <pre><code contenteditable>
+              git clone|pull|push|(fetch)|remote
+            </code></pre>
+          </section>
+          <section>
+            <h2>Klonen</h2>
+            <pre><code contenteditable>
+       git clone https://github.com/tilmanpotthof/git-workshop
+            </code></pre>
+          </section>
+          <section>
+            <div data-markdown><script type="text/template">
+              ## Aufgabe
+              ### Name, Rolle und Fragen eintragen
+
+              [Aufgaben Beschreibung](https://github.com/tilmanpotthof/git-workshop/blob/master/Code-Aufgabe.md)
+              [Anwendungslink](http://localhost:8080/javaee7-wildfly-example-1.0-SNAPSHOT/)
+              </script></div>
+          </section>
+          <section>
+            <div data-markdown><script type="text/template">
+              ## Repository URL ändern
+              Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
+
+              * Datei `.git/config` öffnen und anpassen
+              * URL für `[remote "origin"]` anpassen
+            </script></div>
+          </section>
+          <section>
+            <h2>Push/Pull</h2>
+            <pre><code contenteditable>
+              # Vorbereitung: Änderungen hinzufügen und committen
+
+              # Auf den Server pushen
+              git push origin master
+              git push ## Kurzform
+
+              # Änderungen vom Server holen
+              git pull # (origin master)
+            </code></pre>
+          </section>
+          <section>
+            <h2>Remote hinzufügen</h2>
+            <pre><code contenteditable>
+              git remote -v
+              git remote add github-public https://github.com/tilmanpotthof/git-workshop
+
+              git pull github-public master
+            </code></pre>
+          </section>
+          <section>
+            <h2>Weitere Befehle</h2>
+            <pre><code contenteditable>
+              git fetch -p
+              git fetch -p github-public
+            </code></pre>
+          </section>
+        </section>
 
       <section data-background="#206664">
         <section>
-          <div data-markdown><script type="text/template">
-            ## ?
-            *
-          </script></div>
+          <h2>Grundlagen III</h2>
+          <h2>Branching / Mergin</h2>
+        </section>
+        <section>
+          <h2>Befehle</h2>
+            <pre><code contenteditable>
+              git branch|merge|rebase
+            </code></pre>
+        </section>
+        <section>
+          <h2>Branch erstellen</h2>
+            <pre><code contenteditable>
+              git checkout -b mein-neuer-branch
+
+              # Lange Fassung
+              git branch mein-neuer-branch
+              git checkout mein neuer-branch
+
+              # Branches anzeigem
+              git branch
+              git branch -a
+            </code></pre>
+          </section>
+        <section>
+          <h2>Remote Branches</h2>
+            <pre><code contenteditable>
+              git checkout name-des-remote-branch
+
+              # Mapping auf anderen namen
+              git checkout -b mein-lokaler-branch origin/mein-neuer-branch
+
+              # Neuen lokalen Branch pushen
+              git checkout -b noch-ein-neuer-branch
+              git push -u origin noch-ein-neuer-branch
+            </code></pre>
+        </section>
+        <section>
+          <h2>Branch löschen</h2>
+            <pre><code contenteditable>
+              git branch -d mein-neuer-branch
+              git branch -D mein-neuer-branch
+            </code></pre>
+        </section>
+        <section>
+          <h2>Branch mit Bitbucket erstellen</h2>
+          <img src="create-branch.png"/>
+        </section>
+        <section>
+          <h2>Branch Übersicht</h2>
+          <img src="branch-overview.png"/>
+        </section>
+        <section>
+          <h2>Merge</h2>
+          <pre><code contenteditable>
+            git checkout master
+            git merge mein-neuer-branch
+            git merge --no-ff noch-ein-neuer-branch
+          </code></pre>
+        </section>
+        <section>
+          <h2>Rebase</h2>
+          <pre><code contenteditable>
+            git checkout -b rebase-test
+            # 3 Dateien anlegen A, B, C und einzeln Committen
+
+            git rebase -i HEAD~3
+
+            # Commits aus squash ändern und Kommentar anpassen
+          </code></pre>
         </section>
       </section>
 
       <section>
         <section>
           <div data-markdown><script type="text/template">
-            ## Danke!
+            ## Fragen?
           </script></div>
         </section>
       </section>
