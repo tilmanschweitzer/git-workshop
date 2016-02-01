@@ -88,7 +88,7 @@
 `git diff|reset|checkout`
 
 
-![Staging Area](staging-area.png)
+![Staging Area](einfuehrung/staging-area.png)
 
 ([Image Source: Pro Git by Scott Chacon](http://www.progit.couchone.com/progit/_design/chacon/_show/chapter/01-chapter2))
 
@@ -204,11 +204,11 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 
 ##### Branch erstellen
 
-![Branch Erstellen](create-branch.png)
+![Branch Erstellen](einfuehrung/create-branch.png)
 
 ##### Branch Übersicht
 
-![](branch-overview.png)
+![](einfuehrung/branch-overview.png)
 
 
 #### Pull Requests
