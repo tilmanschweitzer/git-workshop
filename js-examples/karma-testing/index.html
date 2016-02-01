@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>es6 setup</title>
+    <title>karma testing setup</title>
     <style>
         html, body {
             width: 100%;
@@ -14,16 +14,19 @@
             background: #333;
             color: #ccc;
             padding: 20px;
+            overflow: scroll;
+        }
+        #logs {
         }
     </style>
 
 </head>
 <body>
 
-<h2>es6 setup</h2>
+<h2>karma testing setup</h2>
 <pre id="log-container"><code id="logs">## Hello...</code></pre>
 
-<script src="node_modules/systemjs/dist/system.js"></script>
+<script src="dist/app.min.js"></script>
 
 <script src="//localhost:35729/livereload.js"></script>
 </body>
