@@ -21,9 +21,9 @@ public class ExampleWebservice {
   public Response example() throws JsonMappingException {
     List<WorkshopParticipant> workshopParticipants = new ArrayList<>();
 
-    workshopParticipants.add(new WorkshopParticipant("Tilman Potthof", "Workshop-Leiter")
-            .addAnsweredQuestion("Wo ist der Workshop?")
-            .addOpenQuestion("Wo ist die Kaffee-Maschine?"));
+    workshopParticipants.add(new WorkshopParticipant("Tilman Potthof", "Workshop Trainer")
+            .addAnsweredQuestion("Where is the workshop?")
+            .addOpenQuestion("Where is the coffee machine?"));
 
     return Response.ok(workshopParticipants).build();
   }
