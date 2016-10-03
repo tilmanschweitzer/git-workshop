@@ -2,42 +2,42 @@
 
 ## Agenda
 
-* Einführung
-    * Kurze Vorstellung der Teilnehmer
-    * Kurze Vorstellung der Agenda mit Abklärung der Erwartungen und Wünsche
-    * Installation und grundlegende Konfiguration
-    * Überblick über die Konzepte
-* Grundlagen I - Lokales Arbeiten 
-    * Basis-Befehle
-    * Konzeptioneller Vergleich mit SVN
-    * Arbeiten mit der Staging Area
-    * Zurücksetzen von Änderungen
-* Grundlagen II - Verteiltes Arbeiten
-    * Stash als zentrales Repository
-    * Befehle zum verteilten Arbeiten
-    * Einführung in die Oberfläche von Stash
-* Grundlagen III - Branching/Merging
-    * Befehle und Konzepte
-    * Workflows und Unterstützung in Stash 
-* Fallstricke und Best-Practices
-* Grafische git-Tools und IDE-Plugins
-* Weitere Funktionen (nach Bedarf und Interesse)
+* Introduction
+    * Introduction of participants
+    * Check agenda, expectations and wishes
+    * Installation and basic configuration
+    * Conceptional overview
+* Fundamentals I - Local usage
+    * Basic commands
+    * Comparison with SNV
+    * Staging Area
+    * Revert changes
+* Fundamentals II - Distributed usage
+    * Bitbucket Server as central repository
+    * Commands for distributed usage
+    * Walk-through for Bitbucket Server
+* Fundamentals III - Branching/Merging
+    * Commands and Concepts
+    * Workflows and Support in Stash
+* Pitfalls and Best-Practices
+* GUI-Tools and IDE-Plugins
+* Advanced features (depending on use cases or intrest)
     * Tagging
     * History Rewriting
-    * Zurückverfolgen von Änderungen
-    * Cherry-Picking
-* Ausblick
+    * Track changes
+    * Cherry Picking
+* Perspectives
 
-## Installation und grundlegende Konfiguration
+## Installation and basic configuration
 
-* git Projektseite: [git-scm.com](http://git-scm.com/)
+* git project page: [git-scm.com](http://git-scm.com/)
 * Windows
-    * Installer herunterladen und starten
-    * Option wählen **Use Git from the Windows Command Prompt**
-    * Programm **Windows PowerShell** öffnen
+    * Download and run installer 
+    * Select option **Use Git from the Windows Command Prompt**
+    * Open  **Windows PowerShell**
 * Mac/Linux
-    * Installer herunterladen und starten
-    * Programm **Terminal** öffnen
+    * Download and run installer 
+    * Open **Terminal**
 * Shell Plugins 
     * Bash: https://github.com/revans/bash-it
     * Fish + https://github.com/bpinto/oh-my-fish
@@ -46,83 +46,82 @@
     * Eclipse - http://eclipse.org/egit/
     * SourceTree - www.sourcetreeapp.com/download  
 
-### Basis-Befehle
+### Basic commands
 
 `git init|add|rm|commit|status|log`
 
-    mkdir git-hallo-welt
-    cd git-hallo-welt
+    mkdir git-hello-world
+    cd git-hello-world
     git init
     ls -la
     git status
     
-    # nur mac/linux - windows datei anlegen
-    echo "hallo welt" >> hallowelt.txt
-    git add hallowelt.txt
+    # only mac/linux (Windows: use notepad)
+    echo "hello world" >> hello-world.txt
+    git add hello-world.txt
     git status
-    git rm hallowelt.txt
-    git rm --cached hallowelt.txt
-    git commit -m "mein erster commit"
+    git rm hello-world.txt
+    git rm --cached hello-world.txt
+    git commit -m "my first commit"
     
-    ## Author und Email
+    ## Author and email
     git config --global user.email "myemail@example.com"
     git config --global user.name "My Username"
     
-    # Commit mit neuem Namen ändern
+    # Commit again with a new name
     git commit --amend --reset-author
     
-    git commit -m "mein erster commit"
     git log
-    # Hilfe wo ist die Revisionsnummer? (Short Hash)
+    # Where is the revision number?
 
-	# hilfe
+	# help
 	git help commit
 	
-	# ignorieren von dateien
+	# ignore files
 	echo ".DS_Store" >> .gitignore
 	git add .gitignore
-	git commit -m "ignore datei hinzugefügt."
+	git commit -m "Add .gitignore"
 
-### Arbeiten mit der Staging Area
+### The staging agea
 
 `git diff|reset|checkout`
 
 
-![Staging Area](einfuehrung/staging-area.png)
+![Staging Area](fundamentals/staging-area.png)
 
 ([Image Source: Pro Git by Scott Chacon](http://www.progit.couchone.com/progit/_design/chacon/_show/chapter/01-chapter2))
 
 
     git status
     
-    # datei bearbeiten
+    # modify file
     git status
     git diff
     
-    git add <dateiname>
+    git add <filename>
     git status
     git diff
     
-    ## datei bearbeiten
+    ## modify file
     git diff
     git diff -r head
     
-    git reset head <dateiname>
+    git reset head <filename>
     git status
     
-    git add <dateiname>
+    git add <filename>
     git status
     
-    git checkout head <dateiname>
+    git checkout head <filename>
     git status
     
-    ## abkürzung
-    git commit -a -m "wichtige änderung"
+    ## short command
+    git commit -a -m "important change"
     
-    # partial add
+    # add with patch mode
     git add -p
 
-### Befehle zum verteilten Arbeiten
+### Distributed usage
 
 `git clone|pull|push|(fetch)`
 
@@ -131,50 +130,52 @@
     cd <repository-name>
     git status
 
-#### Beispiel Projekt
+#### Example project
 
-[https://github.com/tilmanpotthof/git-workshop](https://github.com/tilmanpotthof/git-workshop)
+[https://github.com/tilmanpotthof/git-workshop-english](https://github.com/tilmanpotthof/git-workshop-english)
 
-    git clone https://github.com/tilmanpotthof/git-workshop
-    cd git-workshop
+    git clone https://github.com/tilmanpotthof/git-workshop-english
+    cd git-workshop-english
     git status
 
-#### Aufgabe: Name, Rolle und Fragen eintragen
+#### Exercise: Add your name, job position and a question
 
-... entweder als JSON-Datei oder in Java-Code:
+... either as JSON or Java code
 
-* Java - Folgende Datei öffnen
-   * `javaee7-wildfly-example/src/main/java/de/tilmanpotthof/workshop/ExampleWebservice.java`
-   * Neues Object `WorkshopParticipant` hinzufügen
-* JSON - Folgenden Ordner öffnen
+* JSON - Open to following folder
    * `javaee7-wildfly-example/src/main/webapp/workshopParticipants/`
-   * Datei `participant-0.json` kopieren und Nummer anpassen
-   * Inhalte ändern
+   * Copy the file `participant-0.json`
+   * Change the file name to `participant-${NEXT_NUMBER}.json`
+   * Change the content
 
-#### Repositorys für Stash anpassen
+* Java - Open the following file (max. 2-3 people)
+   * `javaee7-wildfly-example/src/main/java/de/tilmanpotthof/workshop/ExampleWebservice.java`
+   * Create an new Object `WorkshopParticipant`
+   * Add it to the list
 
-`git remote add|rm`
+#### Change repository to your Bitbucket Server
 
-Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
+`git remote add|rm|set-url`
+
+Special setup to keep changes private.
 
     git remote -v
-    git remote rm origin
-    git remote add origin <new-repository>
-    ## push and set upstream
-    git push -u origin master
+    git remote set-url origin <new-repository>
     
-    git remote add public-github https://github.com/tilmanpotthof/git-workshop
+    git remote add public-github https://github.com/tilmanpotthof/git-workshop-english
     
     git pull public-github master
+    
+    git remote -v
 
 
-## Branching und Merging
+## Branching and Merging
 
-### Befehle
+### Commands
 
     git checkout -b experimental/xy
     
-    # lange version
+    # long version
     git branch experimental/xy
     git checkout experimental/xy
     
@@ -194,41 +195,41 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     ## push to remote
     git push -u origin experimental/xy
     
-    ## achtung - NICHT in anderen remote branches pushen!!!
+    ## WARNING - Don't push to other remote branches
     
     # zurück mergen
     git checkout master
     
 
-#### Branching und Merging mit Stash
+#### Branching and Merging with Bitbucket Server
 
-##### Branch erstellen
+##### Create Branch
 
-![Branch Erstellen](einfuehrung/create-branch.png)
+![Create Branch](fundamentals/create-branch.png)
 
-##### Branch Übersicht
+##### Branch Overview
 
-![](einfuehrung/branch-overview.png)
+![](fundamentals/branch-overview.png)
 
 
 #### Pull Requests
 
-## Fallstricke und Good-Practices
+## Pitfalls and Good Practices
 
-* Fallstricke
-    * Vergessen von `git push` 
-    * Naives Merging -- Server Änderungen einfach überschreiben.
-    * Merging ohne Konflikte kann auch Fehler produzieren
-    * Zu kleine oder zu große Repositories
+* Common Pitfalls
+    * Forget to push (`git push`)
+    * Naive merging -- Toughless overwrite of server changes 
+    * Merging without conflict can still produce errors
+    * Repository partitioning in multi module projects
 * Bad Practice
     * Public History-Rewriting - YOU SHALL NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
-    * `git push --force` (In Stash verbieten!!!)
-* Good-Practices
-    * Oft committen oder stagen
-    * Feature-Branches in Sync mit `develop` halten
-    * Nichts committen, das generiert werden kann
+    * `git push --force` (Prohibit in Bitbucket)
+* Good Practices
+    * Commit as often as it makes sence (at least stage changes)
+    * Keep features branches in sync with the `develop` branch
+    * Don't commit generated files (build results, dependecies etc.)
 
-## Weitere Funktionen / Konzepte
+## Further features / concepts
 
 ### git flow
 
