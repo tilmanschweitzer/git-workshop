@@ -222,7 +222,7 @@ Special setup to keep changes private.
     * Merging without conflict can still produce errors
     * Repository partitioning in multi module projects
 * Bad Practice
-    * Public History-Rewriting - YOU SHALL NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
+    * Public History-Rewriting - YOU SHOULD NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
     * `git push --force` (Prohibit in Bitbucket)
 * Good Practices
     * Commit as often as it makes sence (at least stage changes)
