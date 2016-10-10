@@ -144,7 +144,7 @@
         <section>
           <h2>Hilfe</h2>
           <pre><code contenteditable>
-            git help log
+            git help &ltBefehl&gt
           </code></pre>
         </section>
       </section>
@@ -241,17 +241,17 @@
           </section>
           <section>
             <h2>Klonen</h2>
-            <pre><code contenteditable>
-       git clone https://github.com/tilmanpotthof/git-workshop
+            <pre><code contenteditable>git clone https://github.com/tilmanpotthof/git-workshop
             </code></pre>
           </section>
           <section>
             <div data-markdown><script type="text/template">
               ## Aufgabe
-              ### Name, Rolle und Fragen eintragen
 
-              [Aufgaben Beschreibung](https://github.com/tilmanpotthof/git-workshop/blob/master/Code-Aufgabe.md)
-              [Anwendungslink](http://localhost:8080/javaee7-wildfly-example-1.0-SNAPSHOT/)
+              #### Name, Rolle und Fragen eintragen
+
+              * [Aufgaben Beschreibung](https://github.com/tilmanpotthof/git-workshop/blob/master/Code-Aufgabe.md)
+              * [Anwendungslink](http://localhost:8080/javaee7-wildfly-example-1.0-SNAPSHOT/)
               </script></div>
           </section>
           <section>
@@ -268,7 +268,7 @@
             <pre><code contenteditable>
               # Vorbereitung: Änderungen hinzufügen und committen
 
-              # Auf den Server pushen
+              # Änderungen auf den Server pushen (origin/master)
               git push origin master
               git push ## Kurzform
 
@@ -277,7 +277,7 @@
             </code></pre>
           </section>
           <section>
-            <h2>Remote hinzufügen</h2>
+            <h2>Weiteres Remote-Repository hinzufügen</h2>
             <pre><code contenteditable>
               git remote -v
               git remote add github-public https://github.com/tilmanpotthof/git-workshop
@@ -324,10 +324,10 @@
             <pre><code contenteditable>
               git checkout name-des-remote-branches
 
-              # Mapping auf anderen Namen
+              # Mapping auf einen Branch mit einem anderen lokalen Namen
               git checkout -b mein-lokaler-branch origin/mein-neuer-branch
 
-              # Neuen lokalen Branch pushen
+              # Erstellen und pushen eines neuen lokalen Branchs
               git checkout -b noch-ein-neuer-branch
               git push -u origin noch-ein-neuer-branch
             </code></pre>
@@ -356,14 +356,12 @@
           </code></pre>
         </section>
         <section>
-          <h2>Rebase</h2>
+          <h2>Rebase (Demo)</h2>
           <pre><code contenteditable>
-            git checkout -b rebase-test
-            # 3 Dateien anlegen A, B, C und einzeln Committen
-
-            git rebase -i HEAD~3
-
-            # Commits aus squash ändern und Kommentar anpassen
+            git clone https://github.com/tilmanpotthof/git-rebase-example
+            git checkout linear-modified-history
+            git rebase master
+            git merge linear-modified-history
           </code></pre>
         </section>
       </section>

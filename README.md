@@ -13,13 +13,13 @@
     * Arbeiten mit der Staging Area
     * Zurücksetzen von Änderungen
 * Grundlagen II - Verteiltes Arbeiten
-    * Stash als zentrales Repository
+    * Bitbucket Server als zentrales Repository
     * Befehle zum verteilten Arbeiten
-    * Einführung in die Oberfläche von Stash
+    * Einführung in die Oberfläche von Bitbucket Server
 * Grundlagen III - Branching/Merging
-    * Befehle und Konzepte
-    * Workflows und Unterstützung in Stash 
-* Fallstricke und Best-Practices
+    * Befehle und Konze pte
+    * Workflows und Unterstützung in Bitbucket Server
+* Fallstricke und Good-Practices
 * Grafische git-Tools und IDE-Plugins
 * Weitere Funktionen (nach Bedarf und Interesse)
     * Tagging
@@ -143,15 +143,18 @@
 
 ... entweder als JSON-Datei oder in Java-Code:
 
-* Java - Folgende Datei öffnen
-   * `javaee7-wildfly-example/src/main/java/de/tilmanpotthof/workshop/ExampleWebservice.java`
-   * Neues Object `WorkshopParticipant` hinzufügen
 * JSON - Folgenden Ordner öffnen
    * `javaee7-wildfly-example/src/main/webapp/workshopParticipants/`
-   * Datei `participant-0.json` kopieren und Nummer anpassen
+   * Datei `participant-0.json` kopieren
+   * Dateinamen in `participant-${NAECHSTER_INDEX}.json`ändern
    * Inhalte ändern
 
-#### Repositorys für Stash anpassen
+* Java - Folgende Datei öffnen (max. 2-3 Personen)
+  * `javaee7-wildfly-example/src/main/java/de/tilmanpotthof/workshop/ExampleWebservice.java`
+  * Neues Objekt `WorkshopParticipant` erzeugen
+  * Das Objekt zu der Liste hinzufügen
+
+#### Repositorys für Bitbucket Server anpassen
 
 `git remote add|rm`
 
@@ -200,7 +203,7 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     git checkout master
     
 
-#### Branching und Merging mit Stash
+#### Branching und Merging mit Bitbucket Server
 
 ##### Branch erstellen
 
@@ -221,12 +224,12 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     * Merging ohne Konflikte kann auch Fehler produzieren
     * Zu kleine oder zu große Repositories
 * Bad Practice
-    * Public History-Rewriting - YOU SHALL NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
-    * `git push --force` (In Stash verbieten!!!)
+    * Public History-Rewriting - YOU SHOULD NOT DO THAT [RFC 2119 - IETF](https://www.ietf.org/rfc/rfc2119.txt)
+    * `git push --force` (In Bitbucket Server verbieten)
 * Good-Practices
     * Oft committen oder stagen
     * Feature-Branches in Sync mit `develop` halten
-    * Nichts committen, das generiert werden kann
+    * Generierte Dateien nicht committen (Build Artefakte, Abhängigkeiten etc.)
 
 ## Weitere Funktionen / Konzepte
 
