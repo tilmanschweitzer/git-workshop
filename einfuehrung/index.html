@@ -224,6 +224,33 @@
           </section>
         </section>
 
+        <section data-background="#0c3b66">
+          <section>
+            <h2>Ignorieren von Dateien</h2>
+          </section>
+          <section>
+            <h2>Lokale <code>.gitignore</code> Datei</h2>
+            <div>Im Root-Verzeichnis des Repositories</div>
+            <pre><code contenteditable>
+              .project
+              .settings/
+              .classpath
+              target/
+            </code></pre>
+          </section>
+          <section>
+            <h2>Globale <code>.gitignore</code> Datei</h2>
+            <div>In globale <code>.gitconfig</code> eintragen.</div>
+            <pre><code contenteditable>
+              git config --global core.excludesfile
+            </code></pre>
+          </section>
+          <section>
+            <h2>Konfiguration über SourceTree</h2>
+            <img src="img/sourcetree-global-git-ignore.png" style="width: 50%">
+          </section>
+        </section>
+
         <section data-background="#542866">
           <section>
             <div data-markdown><script type="text/template">
