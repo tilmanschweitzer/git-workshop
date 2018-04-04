@@ -260,6 +260,10 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     git diff -r head~3 -- javaee7-wildfly-example/
     git diff --word-diff --word-diff-regex='[^[:space:]]' embed.plnkr.co/
     
+### Advanced Stageing
+
+    # Aehnlich zu git add -p, patch option existiert auch im Interaktiven Modus
+    git add -i 
 
 ### Stash
 
