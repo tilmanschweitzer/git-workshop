@@ -291,7 +291,15 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 
     git commit --amend
     git rebase -i HEAD~4
-    
+   
+### git merge vs. git rebase
+
+    *WIP
+
+### git lfs
+
+    *WIP
+ 
 ### ???
 
     git gc
