@@ -183,7 +183,10 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     
     git add .
     git status
+    # Kurzschreibweise mit Message direkt inline
     git commit -m "..."
+    # Commitmessage in Editor
+    git commit 
     
     git branch -a
     
