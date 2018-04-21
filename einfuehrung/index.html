@@ -139,6 +139,9 @@
 
             # Benutzerdefinierte Formattierung
             git log --pretty=format:"%h %s"
+
+	    # Einzeilige Darstellung
+	    git log --pretty=oneline
           </code></pre>
         </section>
         <section>
@@ -194,6 +197,13 @@
 
               # Varianten
               git reset head -- &ltdateipfad&gt
+
+	      # Verwerfen von untracked Änderungen
+	      # Testlauf
+	      git clean -n
+
+	      # Ausführen
+	      git clean -f -d
             </code></pre>
           </section>
           <section>
@@ -344,7 +354,10 @@
               # Branches anzeigen
               git branch
               git branch -a
-            </code></pre>
+              
+	      # Alle Remote Branches anzeigen
+	      git branch --remote
+	    </code></pre>
           </section>
         <section>
           <h2>Remote Branches</h2>

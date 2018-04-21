@@ -183,7 +183,10 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     
     git add .
     git status
+    # Kurzschreibweise mit Message direkt inline
     git commit -m "..."
+    # Commitmessage in Editor
+    git commit 
     
     git branch -a
     
@@ -260,6 +263,10 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
     git diff -r head~3 -- javaee7-wildfly-example/
     git diff --word-diff --word-diff-regex='[^[:space:]]' embed.plnkr.co/
     
+### Advanced Stageing
+
+    # Aehnlich zu git add -p, patch option existiert auch im Interaktiven Modus
+    git add -i 
 
 ### Stash
 
@@ -284,7 +291,15 @@ Besonderheit, um Änderungen privat zu halten. Normalerweise nicht notwendig.
 
     git commit --amend
     git rebase -i HEAD~4
-    
+   
+### git merge vs. git rebase
+
+    *WIP
+
+### git lfs
+
+    *WIP
+ 
 ### ???
 
     git gc
