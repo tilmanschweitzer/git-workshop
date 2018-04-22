@@ -84,54 +84,72 @@
       <section data-background="#0c3b66">
         <section>
           <h2>Basis Befehle</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
             git init|add|rm|commit|status|log|config
           </code></pre>
         </section>
         <section>
           <h2>Repository anlegen</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
+            # Ordner anlegen
             mkdir git-hallo-welt
+
+            # In Ordner wechseln
             cd git-hallo-welt
+
+            # Git Repository im aktuellen Ordner initialisieren
             git init
+
+            # Ordnerinhalt anzeigen
             ls -la # Windows: dir
+
+            # Git fragen "Wie geht es dir so?"
             git status
-          </code></pre>
-        </section>
-        <section>
-          <h2>Datei anlegen, hinzufügen und committen</h2>
-          <pre><code contenteditable>
-            echo "hallo welt" >> hallowelt.txt # nur unix
-            git add hallowelt.txt
-            git status
-            git rm hallowelt.txt
-            git rm --cached hallowelt.txt
-            git add hallowelt.txt
-            git commit -m "mein erster commit"
           </code></pre>
         </section>
         <section>
           <h2>Benutzer konfigurieren</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
+            # Benutzername und E-Mail festlegen
+            # (Mail sollte mit Server-Account übereinstimmen)
             git config --global user.email "myemail@example.com"
             git config --global user.name "My Username"
-
-            # Commit mit neuem Namen ändern
-            git commit --amend --reset-author
 
             # Konfiguration anzeigen
             git config --local --list
             git config --global --list
+
+            # Konfigurierten Editor anzeigen
+            git config --global core.editor
+          </code></pre>
+        </section>
+        <section>
+          <h2>Datei anlegen, hinzufügen und committen</h2>
+          <pre><code contenteditable data-trim data-noescape>
+            # Datei mit Inhalt "hallo welt" anlegen
+            echo "hallo welt" >> hallowelt.txt # nur unix
+
+            # Datei hinzufügen
+            git add hallowelt.txt
+
+            # "Git, wie geht's dir?"
+            git status
+
+            # Commit mit Editor oder in der Kurzschreibweise
+            git commit
+            git commit -m "Mein erster Commit"
           </code></pre>
         </section>
         <section>
           <h2>Hilfe und Log</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
+            # Zu jedem Befehl gibt es eine Hilfe: git help &ltBefehl&gt
             git help log
 
-            git log # Wo ist die Revisionsnummer? (Short Hash)
+            # Anzeige der Historie - Wo ist die Revisionsnummer?
+            git log
 
-            # Kurze Anzeige
+            # Anzeige in einer Zeile (--oneline oder --pretty=oneline)
             git log --oneline
 
             # Nach Autor filtern
@@ -139,15 +157,6 @@
 
             # Benutzerdefinierte Formattierung
             git log --pretty=format:"%h %s"
-
-	    # Einzeilige Darstellung
-	    git log --pretty=oneline
-          </code></pre>
-        </section>
-        <section>
-          <h2>Hilfe</h2>
-          <pre><code contenteditable>
-            git help &ltBefehl&gt
           </code></pre>
         </section>
       </section>
@@ -162,13 +171,13 @@
           </section>
           <section>
             <h2>Befehle</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git add|reset|checkout|diff
             </code></pre>
           </section>
           <section>
             <h2>Status und Veränderungen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git status
 
               # Datei bearbeiten
@@ -186,7 +195,7 @@
           </section>
           <section>
             <h2>Zurücksetzen von Änderungen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git status
 
               # Zurücksetzen
@@ -208,7 +217,7 @@
           </section>
           <section>
             <h2>Zurückholen von Änderungen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git status
 
               # Zurückholen
@@ -224,7 +233,7 @@
           </section>
           <section>
             <h2>Weitere Befehle</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               # Alle überwachten Dateien committen
               git commit -a -m "Wichtiger commit"
 
@@ -241,7 +250,7 @@
           <section>
             <h2>Lokale <code>.gitignore</code> Datei</h2>
             <div>Im Root-Verzeichnis des Repositories</div>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               .project
               .settings/
               .classpath
@@ -251,7 +260,7 @@
           <section>
             <h2>Globale <code>.gitignore</code> Datei</h2>
             <div>In globale <code>.gitconfig</code> eintragen.</div>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git config --global core.excludesfile
             </code></pre>
           </section>
@@ -272,13 +281,13 @@
         <section data-background="#542866">
           <section>
             <h2>Befehle</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git clone|pull|push|(fetch)|remote
             </code></pre>
           </section>
           <section>
             <h2>Klonen</h2>
-            <pre><code contenteditable>git clone https://github.com/tilmanpotthof/git-workshop
+            <pre><code contenteditable data-trim data-noescape>git clone https://github.com/tilmanpotthof/git-workshop
             </code></pre>
           </section>
           <section>
@@ -302,7 +311,7 @@
           </section>
           <section>
             <h2>Push/Pull</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               # Vorbereitung: Änderungen hinzufügen und committen
 
               # Änderungen auf den Server pushen (origin/master)
@@ -315,7 +324,7 @@
           </section>
           <section>
             <h2>Weiteres Remote-Repository hinzufügen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git remote -v
               git remote add github-public https://github.com/tilmanpotthof/git-workshop
 
@@ -324,7 +333,7 @@
           </section>
           <section>
             <h2>Weitere Befehle</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git fetch -p
               git fetch -p github-public
             </code></pre>
@@ -338,13 +347,13 @@
         </section>
         <section>
           <h2>Befehle</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git branch|merge|rebase
             </code></pre>
         </section>
         <section>
           <h2>Branch erstellen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git checkout -b mein-neuer-branch
 
               # Lange Fassung
@@ -361,7 +370,7 @@
           </section>
         <section>
           <h2>Remote Branches</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git checkout name-des-remote-branches
 
               # Mapping auf einen Branch mit einem anderen lokalen Namen
@@ -374,7 +383,7 @@
         </section>
         <section>
           <h2>Branch löschen</h2>
-            <pre><code contenteditable>
+            <pre><code contenteditable data-trim data-noescape>
               git branch -d mein-neuer-branch
               git branch -D mein-neuer-branch
             </code></pre>
@@ -389,7 +398,7 @@
         </section>
         <section>
           <h2>Merge</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
             git checkout master
             git merge mein-neuer-branch
             git merge --no-ff noch-ein-neuer-branch
@@ -397,7 +406,7 @@
         </section>
         <section>
           <h2>Rebase (Demo)</h2>
-          <pre><code contenteditable>
+          <pre><code contenteditable data-trim data-noescape>
             git clone https://github.com/tilmanpotthof/git-rebase-example
             git checkout linear-modified-history
             git rebase master
@@ -434,12 +443,11 @@
 
       // Optional reveal.js plugins
       dependencies: [
-        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-        { src: 'plugin/zoom-js/zoom.js', async: true },
-        { src: 'plugin/notes/notes.js', async: true }
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true }
       ]
     });
 </script>
