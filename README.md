@@ -32,14 +32,14 @@
 
 * git Projektseite: [git-scm.com](http://git-scm.com/)
 * Windows
-    * Installer herunterladen und starten
+    * Installationsprogramm herunterladen und starten
     * Option wählen **Use Git from the Windows Command Prompt**
-    * Programm **Windows PowerShell** öffnen
+    * Programm **Windows PowerShell** oder **Git Bash** öffnen
 * Mac/Linux
-    * Installer herunterladen und starten
+    * Installationsprogramm herunterladen und starten
     * Programm **Terminal** öffnen
 * Shell Plugins 
-    * Bash: https://github.com/revans/bash-it
+    * Bash + https://github.com/revans/bash-it
     * Fish + https://github.com/bpinto/oh-my-fish
     * ZSH + https://github.com/robbyrussell/oh-my-zsh 
 *  GUIs
@@ -50,38 +50,84 @@
 
 `git init|add|rm|commit|status|log`
 
-    mkdir git-hallo-welt
-    cd git-hallo-welt
-    git init
-    ls -la
-    git status
-    
-    # nur mac/linux - windows datei anlegen
-    echo "hallo welt" >> hallowelt.txt
-    git add hallowelt.txt
-    git status
-    git rm hallowelt.txt
-    git rm --cached hallowelt.txt
-    git commit -m "mein erster commit"
-    
-    ## Author und Email
-    git config --global user.email "myemail@example.com"
-    git config --global user.name "My Username"
-    
-    # Commit mit neuem Namen ändern
-    git commit --amend --reset-author
-    
-    git commit -m "mein erster commit"
-    git log
-    # Hilfe wo ist die Revisionsnummer? (Short Hash)
-
-	# hilfe
-	git help commit
+	# Ordner anlegen
+	mkdir git-hallo-welt
 	
-	# ignorieren von dateien
-	echo ".DS_Store" >> .gitignore
-	git add .gitignore
-	git commit -m "ignore datei hinzugefügt."
+	# In Ordner wechseln
+	cd git-hallo-welt
+	
+	# Git Repository im aktuellen Ordner initialisieren
+	git init
+	
+	# Ordnerinhalt anzeigen
+	ls -la # Windows: dir
+	
+	# Git fragen "Wie geht es dir so?"
+	git status
+	
+
+	# Benutzer konfigurieren
+	# ----------------------
+	
+	# Benutzername und E-Mail festlegen
+	# (Mail sollte mit Server-Account übereinstimmen)
+	git config --global user.email "myemail@example.com"
+	git config --global user.name "My Username"
+	
+	# Konfiguration anzeigen
+	git config --local --list
+	git config --global --list
+	
+	# Konfigurierten Editor anzeigen
+	git config --global core.editor
+	
+	# Datei anlegen, vormerken und committen
+	# --------------------------------------
+
+	# Datei mit Inhalt "hallo welt" anlegen
+	echo "hallo welt" >> hallowelt.txt # nur unix
+	
+	# Datei für nächsten Commit vormerken
+	git add hallowelt.txt
+	
+	# "Git, wie geht's dir?"
+	git status
+	
+	# Commit mit Editor oder in der Kurzschreibweise
+	git commit
+	git commit -m "Mein erster Commit"
+	
+	
+	# Datei löschen
+	# -------------
+	
+	# Datei im Dateisystem löschen
+	rm hallowelt.txt
+	git status
+	
+	# Datei nicht mehr über Git verwalten
+	git rm hallowelt.txt
+	git status
+	
+	
+	# Hilfe und Log
+	# -------------
+	
+	# Zu jedem Befehl gibt es eine Hilfe: git help <Befehl>
+	git help log
+	
+	# Anzeige der Historie - Wo ist die Revisionsnummer?
+	git log
+	
+	# Anzeige in einer Zeile (--oneline oder --pretty=oneline)
+	git log --oneline
+	
+	# Nach Autor filtern
+	git log --author="Tilman Potthof"
+	
+	# Benutzerdefinierte Formattierung
+	git log --pretty=format:"%h %s"
+
 
 ### Arbeiten mit der Staging Area
 
@@ -93,34 +139,84 @@
 ([Image Source: Pro Git by Scott Chacon](http://www.progit.couchone.com/progit/_design/chacon/_show/chapter/01-chapter2))
 
 
-    git status
-    
-    # datei bearbeiten
-    git status
-    git diff
-    
-    git add <dateiname>
-    git status
-    git diff
-    
-    ## datei bearbeiten
-    git diff
-    git diff -r head
-    
-    git reset head <dateiname>
-    git status
-    
-    git add <dateiname>
-    git status
-    
-    git checkout head <dateiname>
-    git status
-    
-    ## abkürzung
-    git commit -a -m "wichtige änderung"
-    
-    # partial add
-    git add -p
+	# Status und Veränderung
+	# ----------------------
+	
+	# "Git, wie geht's dir?"
+	git status
+	
+	# Datei bearbeiten, Status abfragen, Diff anzeigen
+	git status
+	git diff
+	
+	# Datei vormerken, Status abfragen, Diff anzeigen
+	git add <dateiname>
+	git status
+	git diff
+	
+	
+	# Zurücksetzen von Änderungen
+	# ---------------------------
+	
+	# Zurücksetzen einer einzelnen Datei
+	git reset <dateiname>
+	git status
+	
+	# Inhalt der Datei prüfen
+	
+	# Varianten
+	git reset head -- <dateipfad>
+	
+	# Verwerfen nicht verwalteter Dateien (Testlauf, Ausführen)
+	git clean -nd
+	git clean -fd
+	
+
+	# Zurückholen von Inhalten
+	# ------------------------
+	
+	# Datei ändert und Git fragen "Wie geht's dir?"
+	git status
+	
+	# Zurückholen der letzten (vorgemerkten) Version
+	git checkout <dateiname>
+	git status
+	
+	# Inhalt der Datei prüfen
+	
+	# Varianten
+	git checkout head <dateiname>
+	git checkout -r <hash> .
+	
+	
+	# Weitere Staging Area
+	# ------------------------
+	
+	# Alle verwalteten Dateien committen
+	git commit -a -m "Wichtiger commit"
+	
+	# Partielles vormerken von Änderungen
+	git add -p
+	
+	# Interaktiver Modus - Ähnlich zu git add -p
+	# (patch option existiert auch im Interaktiven Modus)
+	git add -i
+
+
+### Ignorieren von Dateien
+
+	# Lokale `.gitignore` DATEI
+	# -------------------------
+	
+	# Lokale .gitignore Datei anlegen
+	
+	echo "node_modules/
+	.project/
+	.settings/
+	.classpath
+	target/" > .gitignore
+
+
 
 ### Befehle zum verteilten Arbeiten
 
