@@ -141,6 +141,18 @@
           </code></pre>
         </section>
         <section>
+          <h2>Datei löschen</h2>
+          <pre><code contenteditable data-trim data-noescape>
+            # Datei im Dateisystem löschen
+            rm hallowelt.txt
+            git status
+
+            # Datei nicht mehr über Git verwalten
+            git rm hallowelt.txt
+            git status
+          </code></pre>
+        </section>
+        <section>
           <h2>Hilfe und Log</h2>
           <pre><code contenteditable data-trim data-noescape>
             # Zu jedem Befehl gibt es eine Hilfe: git help &ltBefehl&gt
@@ -160,7 +172,6 @@
           </code></pre>
         </section>
       </section>
-
         <section data-background="#0c3b66">
           <section>
             <h2>Die Staging Area</h2>
@@ -209,7 +220,7 @@
             </code></pre>
           </section>
           <section>
-            <h2>Zurückholen von Änderungen</h2>
+            <h2>Zurückholen von Inhalten</h2>
             <pre><code contenteditable data-trim data-noescape>
               # Datei ändert und Git fragen "Wie geht's dir?"
               git status
@@ -226,13 +237,17 @@
             </code></pre>
           </section>
           <section>
-            <h2>Weitere Befehle</h2>
+            <h2>Weitere Staging Befehle</h2>
             <pre><code contenteditable data-trim data-noescape>
               # Alle verwalteten Dateien committen
               git commit -a -m "Wichtiger commit"
 
-              # Partielles/Interaktives Hinzufügen
+              # Partielles vormerken von Änderungen
               git add -p
+
+              # Interaktiver Modus - Ähnlich zu git add -p
+              # (patch option existiert auch im Interaktiven Modus)
+              git add -i
             </code></pre>
           </section>
         </section>
