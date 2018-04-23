@@ -129,7 +129,7 @@
             # Datei mit Inhalt "hallo welt" anlegen
             echo "hallo welt" >> hallowelt.txt # nur unix
 
-            # Datei hinzufügen
+            # Datei für nächsten Commit vormerken
             git add hallowelt.txt
 
             # "Git, wie geht's dir?"
@@ -178,53 +178,47 @@
           <section>
             <h2>Status und Veränderungen</h2>
             <pre><code contenteditable data-trim data-noescape>
+              # "Git, wie geht's dir?"
               git status
 
-              # Datei bearbeiten
+              # Datei bearbeiten, Status abfragen, Diff anzeigen
               git status
               git diff
 
-              # Datei hinzufügen
+              # Datei vormerken, Status abfragen, Diff anzeigen
               git add &ltdateiname&gt
               git status
               git diff
-              git diff -r head
-              git diff -r &lthash&gt
-
             </code></pre>
           </section>
           <section>
             <h2>Zurücksetzen von Änderungen</h2>
             <pre><code contenteditable data-trim data-noescape>
-              git status
-
-              # Zurücksetzen
+              # Zurücksetzen einer einzelnen Datei
               git reset &ltdateiname&gt
               git status
 
-              # Dateiinhalt prüfen
+              # Inhalt der Datei prüfen
 
               # Varianten
               git reset head -- &ltdateipfad&gt
 
-	      # Verwerfen von untracked Änderungen
-	      # Testlauf
-	      git clean -n
-
-	      # Ausführen
-	      git clean -f -d
+              # Verwerfen nicht verwalteter Dateien (Testlauf, Ausführen)
+              git clean -nd
+              git clean -fd
             </code></pre>
           </section>
           <section>
             <h2>Zurückholen von Änderungen</h2>
             <pre><code contenteditable data-trim data-noescape>
+              # Datei ändert und Git fragen "Wie geht's dir?"
               git status
 
-              # Zurückholen
+              # Zurückholen der letzten (vorgemerkten) Version
               git checkout &ltdateiname&gt
               git status
 
-              # Dateiinhalt prüfen
+              # Inhalt der Datei prüfen
 
               # Varianten
               git checkout head &ltdateiname&gt
@@ -234,7 +228,7 @@
           <section>
             <h2>Weitere Befehle</h2>
             <pre><code contenteditable data-trim data-noescape>
-              # Alle überwachten Dateien committen
+              # Alle verwalteten Dateien committen
               git commit -a -m "Wichtiger commit"
 
               # Partielles/Interaktives Hinzufügen
@@ -251,7 +245,8 @@
             <h2>Lokale <code>.gitignore</code> Datei</h2>
             <div>Im Root-Verzeichnis des Repositories</div>
             <pre><code contenteditable data-trim data-noescape>
-              .project
+              node_modules/
+              .project/
               .settings/
               .classpath
               target/
@@ -356,7 +351,7 @@
             <pre><code contenteditable data-trim data-noescape>
               git checkout -b mein-neuer-branch
 
-              # Lange Fassung
+              # Lange Fassung zum Branch erstellen
               git branch mein-neuer-branch
               git checkout mein neuer-branch
 
@@ -364,9 +359,9 @@
               git branch
               git branch -a
               
-	      # Alle Remote Branches anzeigen
-	      git branch --remote
-	    </code></pre>
+              # Alle Remote Branches anzeigen
+              git branch --remote
+        </code></pre>
           </section>
         <section>
           <h2>Remote Branches</h2>
@@ -389,8 +384,8 @@
             </code></pre>
         </section>
         <section>
-          <h2>Branch mit Bitbucket erstellen</h2>
-          <img src="create-branch.png"/>
+          <h2>Branch erstellen</h2>
+          <img data-src="create-branch.png"/>
         </section>
         <section>
           <h2>Branch Übersicht</h2>
